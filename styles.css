@@ -1,0 +1,17 @@
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Main CSS Variables */
+:root {
+  --primary-color: wheat;
+  --secondary-color: black;
+}
+body {
+  background-color: var(--primary-color);
+}
