@@ -27,6 +27,7 @@ main {
   height: 90vmin;
   width: 100vmin;
   background-color: var(--primary-color);
+  overflow: hidden;
 }
 .starting-message {
   position: absolute;
