@@ -12,7 +12,7 @@ function renderGame(time) {
   }
   const delta = time - lastTime;
   lastTime = time;
-  movement();
+  movement(delta);
   window.requestAnimationFrame(renderGame);
 }
 window.requestAnimationFrame(renderGame);
