@@ -7,11 +7,11 @@
   padding: 0;
 }
 
-/* Main CSS Variables */
 :root {
   --primary-color: wheat;
   --secondary-color: black;
 }
+
 body {
   background-color: var(--secondary-color);
   height: 100vh;
