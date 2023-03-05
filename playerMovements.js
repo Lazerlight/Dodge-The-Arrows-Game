@@ -20,4 +20,9 @@ window.addEventListener("keyup", function () {
 
 export function movement(delta) {
   incProperty(playerEl, "--left", SPEED * delta * PLAYER_VELOCITY.x);
+  if (getProperty(playerEl, "--left") <= 5) {
+    setProperty(playerEl, "--left", 5);
+  } else if (getProperty(playerEl, "--left") >= 95) {
+    setProperty(playerEl, "--left", 95);
+  }
 }
