@@ -50,8 +50,6 @@ main {
   bottom: 0;
   left: calc(var(--left) * 1%);
   transform: translateX(-50%);
-  background: url(./stick.gif);
-  background-size: contain;
 }
 .spear {
   --top: 0;
