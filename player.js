@@ -1,6 +1,6 @@
 import { getProperty, incProperty, setProperty } from "./CustomFunctions.js";
+import { SPEED } from "./spear.js";
 
-const SPEED = 0.1;
 const playerEl = document.querySelector(".humanoid");
 const PLAYER_VELOCITY = {
   x: 0,
@@ -23,6 +23,7 @@ window.addEventListener("keyup", function () {
 export function movement(delta) {
   // A function that handles the range of motion and velocity of the main player element
   incProperty(playerEl, "--left", SPEED * delta * PLAYER_VELOCITY.x);
+
   if (getProperty(playerEl, "--left") <= 5) {
     setProperty(playerEl, "--left", 5);
   } else if (getProperty(playerEl, "--left") >= 95) {

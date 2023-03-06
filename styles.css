@@ -26,9 +26,10 @@ main {
   text-align: center;
   height: 90vmin;
   width: 100vmin;
-  background-color: var(--primary-color);
   overflow: hidden;
+  background-color: var(--primary-color);
 }
+
 .starting-message {
   position: absolute;
   top: 50%;
@@ -49,6 +50,8 @@ main {
   bottom: 0;
   left: calc(var(--left) * 1%);
   transform: translateX(-50%);
+  background: url(./stick.gif);
+  background-size: contain;
 }
 .spear {
   --top: 0;

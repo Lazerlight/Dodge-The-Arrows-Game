@@ -1,8 +1,8 @@
 import { getProperty, incProperty, setProperty } from "./CustomFunctions.js";
 
-const SPEED = 0.1;
-const mainEl = document.querySelector("main");
-let spearEls = document.querySelectorAll(".spear");
+export let SPEED = 0.1;
+const playerEl = document.querySelector(".humanoid");
+const spearEls = document.querySelectorAll(".spear");
 
 export function setupSpear(delta) {
   //  Creating and setting up the position of the spear element
@@ -12,10 +12,23 @@ export function setupSpear(delta) {
   });
 }
 
+let followingSpear = true;
 export function moveSpear(delta) {
   // Handling the spear movement and position
   spearEls.forEach((e) => {
     incProperty(e, "--top", SPEED * delta);
+    if (getProperty(e, "--top") >= 95 && followingSpear) {
+      e.style.left = getProperty(playerEl, "--left") + "%";
+      followingSpear = false;
+      setProperty(e, "--top", getRandomPositionTop());
+      SPEED += SPEED * 0.001;
+    } else if (getProperty(e, "--top") >= 95) {
+      e.style.background = "red";
+      e.style.left = getRandomPositionLeft() + "%";
+      setProperty(e, "--top", getRandomPositionTop());
+      SPEED += SPEED * 0.001;
+      followingSpear = true;
+    }
   });
 }
 
@@ -23,7 +36,8 @@ function getRandomPositionLeft() {
   // Returning a random number between 1 - 100
   return Math.floor(Math.random() * 100 + 1);
 }
+
 function getRandomPositionTop() {
-  // Returning a random number between -10 - -50
-  return Math.floor(Math.random() * -300 - 10);
+  // Returning a random number between -100 - -600
+  return Math.floor(Math.random() * -500 - 100);
 }
