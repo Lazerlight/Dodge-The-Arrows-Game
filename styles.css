@@ -27,7 +27,7 @@ main {
   height: 90vmin;
   width: 100vmin;
   overflow: hidden;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
 }
 
 .starting-message {
@@ -60,4 +60,19 @@ main {
   top: calc(var(--top) * 1%);
   left: 50%;
   transform: translateX(-50%);
+}
+.background-1 {
+  background: url(./Graphics/back.png);
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+.background-2 {
+  background: url(./Graphics/back.png);
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: -100%;
 }

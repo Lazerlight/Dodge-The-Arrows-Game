@@ -23,7 +23,6 @@ export function moveSpear(delta) {
       setProperty(e, "--top", getRandomPositionTop());
       SPEED += SPEED * 0.001;
     } else if (getProperty(e, "--top") >= 95) {
-      e.style.background = "red";
       e.style.left = getRandomPositionLeft() + "%";
       setProperty(e, "--top", getRandomPositionTop());
       SPEED += SPEED * 0.001;
@@ -38,6 +37,6 @@ function getRandomPositionLeft() {
 }
 
 function getRandomPositionTop() {
-  // Returning a random number between -100 - -600
-  return Math.floor(Math.random() * -500 - 100);
+  // Returning a random number between -20 - -220
+  return Math.floor(Math.random() * -200 - 20);
 }
