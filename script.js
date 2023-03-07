@@ -1,3 +1,4 @@
+import { moveBackground } from "./background.js";
 import { movement } from "./player.js";
 import { moveSpear, setupSpear } from "./spear.js";
 
@@ -16,7 +17,9 @@ function renderGame(time) {
   const delta = time - lastTime;
   lastTime = time;
   movement(delta);
+  moveBackground(delta);
   moveSpear(delta);
+
   window.requestAnimationFrame(renderGame);
 }
 setupSpear();
