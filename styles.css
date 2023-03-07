@@ -44,8 +44,8 @@ main {
 .humanoid {
   --left: 50;
   background-color: red;
-  width: 10vmin;
-  height: 15vmin;
+  width: 5vmin;
+  height: 10vmin;
   position: absolute;
   bottom: 0;
   left: calc(var(--left) * 1%);
@@ -54,7 +54,7 @@ main {
 .spear {
   --top: 0;
   background-color: black;
-  width: 2vmin;
+  width: 5vmin;
   height: 10vmin;
   position: absolute;
   top: calc(var(--top) * 1%);

@@ -17,8 +17,9 @@ export function moveSpear(delta) {
   // Handling the spear movement and position
   spearEls.forEach((e) => {
     incProperty(e, "--top", SPEED * delta);
-    if (getProperty(e, "--top") >= 95 && followingSpear) {
+    if (getProperty(e, "--top") >= 95 && followingSpear && SPEED <= 0.15) {
       e.style.left = getProperty(playerEl, "--left") + "%";
+      console.log("execute");
       followingSpear = false;
       setProperty(e, "--top", getRandomPositionTop());
       SPEED += SPEED * 0.001;

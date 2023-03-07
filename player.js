@@ -8,9 +8,9 @@ const PLAYER_VELOCITY = {
 
 window.addEventListener("keydown", (e) => {
   // Checking if certain key is pressed and changes the direction of movement if the statement is correct
-  if (e.key == "ArrowRight") {
+  if (e.key == "ArrowRight" || e.key == "d") {
     PLAYER_VELOCITY.x = 1;
-  } else if (e.key == "ArrowLeft") {
+  } else if (e.key == "ArrowLeft" || e.key == "a") {
     PLAYER_VELOCITY.x = -1;
   }
 });
@@ -24,9 +24,9 @@ export function movement(delta) {
   // A function that handles the range of motion and velocity of the main player element
   incProperty(playerEl, "--left", SPEED * delta * PLAYER_VELOCITY.x);
 
-  if (getProperty(playerEl, "--left") <= 5) {
-    setProperty(playerEl, "--left", 5);
-  } else if (getProperty(playerEl, "--left") >= 95) {
-    setProperty(playerEl, "--left", 95);
+  if (getProperty(playerEl, "--left") <= 3) {
+    setProperty(playerEl, "--left", 3);
+  } else if (getProperty(playerEl, "--left") >= 97) {
+    setProperty(playerEl, "--left", 97);
   }
 }

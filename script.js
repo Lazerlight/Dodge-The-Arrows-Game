@@ -7,20 +7,33 @@ const spearEl = document.querySelector(".spear");
 const messageEl = document.querySelector(".starting-message");
 
 let lastTime;
+let gameStarted = false;
+
+window.addEventListener(
+  "keypress",
+  function () {
+    gameStarted = true;
+    renderGame();
+  },
+  { once: true }
+);
+
 function renderGame(time) {
   // The main function that constantly updates the game and renders the elements
-  if (lastTime == null) {
-    window.requestAnimationFrame(renderGame);
+  if (gameStarted) {
+    if (lastTime == null) {
+      window.requestAnimationFrame(renderGame);
+      lastTime = time;
+      return;
+    }
+    const delta = time - lastTime;
     lastTime = time;
-    return;
-  }
-  const delta = time - lastTime;
-  lastTime = time;
-  movement(delta);
-  moveBackground(delta);
-  moveSpear(delta);
+    movement(delta);
+    moveBackground(delta);
+    moveSpear(delta);
 
-  window.requestAnimationFrame(renderGame);
+    window.requestAnimationFrame(renderGame);
+  }
 }
 setupBackground();
 setupSpear();
