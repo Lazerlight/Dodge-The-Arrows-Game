@@ -61,21 +61,12 @@ main {
   left: 50%;
   transform: translateX(-50%);
 }
-.background-1 {
+.background {
   --top: 0;
+  height: 100%;
+  width: 100%;
   background: url(./Graphics/back.png);
   position: absolute;
   z-index: -1;
   top: calc(var(--top) * 1%);
-  height: 100%;
-  width: 100%;
-}
-.background-2 {
-  --top: -99;
-  background: url(./Graphics/back.png);
-  position: absolute;
-  z-index: -1;
-  top: calc(var(--top) * 1%);
-  height: 100%;
-  width: 100%;
 }

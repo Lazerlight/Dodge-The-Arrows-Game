@@ -1,4 +1,4 @@
-import { moveBackground } from "./background.js";
+import { moveBackground, setupBackground } from "./background.js";
 import { movement } from "./player.js";
 import { moveSpear, setupSpear } from "./spear.js";
 
@@ -22,6 +22,9 @@ function renderGame(time) {
 
   window.requestAnimationFrame(renderGame);
 }
+setupBackground();
 setupSpear();
 
 window.requestAnimationFrame(renderGame);
+
+// TODO - Add a warp portal that sets the speed of ground to 0.3 and increments the score faster then stops after 3 seconds with possibility of spawn every 30 - 90 seconds
