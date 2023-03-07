@@ -13,6 +13,7 @@ window.addEventListener(
   "keypress",
   function () {
     gameStarted = true;
+    messageEl.classList.add("hidden");
     renderGame();
   },
   { once: true }
@@ -35,9 +36,9 @@ function renderGame(time) {
     window.requestAnimationFrame(renderGame);
   }
 }
+
 setupBackground();
 setupSpear();
-
 window.requestAnimationFrame(renderGame);
 
 // TODO - Add a warp portal that sets the speed of ground to 0.3 and increments the score faster then stops after 3 seconds with possibility of spawn every 30 - 90 seconds

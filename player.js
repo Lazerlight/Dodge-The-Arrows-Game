@@ -1,3 +1,5 @@
+const FRAME_DELAY = 30;
+
 import { getProperty, incProperty, setProperty } from "./CustomFunctions.js";
 import { SPEED } from "./spear.js";
 
@@ -20,6 +22,8 @@ window.addEventListener("keyup", function () {
   PLAYER_VELOCITY.x = 0;
 });
 
+let currentFrame = 1;
+let currentFrameDelay = 0;
 export function movement(delta) {
   // A function that handles the range of motion and velocity of the main player element
   incProperty(playerEl, "--left", SPEED * delta * PLAYER_VELOCITY.x);
@@ -28,5 +32,15 @@ export function movement(delta) {
     setProperty(playerEl, "--left", 3);
   } else if (getProperty(playerEl, "--left") >= 97) {
     setProperty(playerEl, "--left", 97);
+  }
+  currentFrameDelay += 1;
+  if (currentFrame === 1 && currentFrameDelay >= FRAME_DELAY) {
+    currentFrame = 2;
+    playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
+    currentFrameDelay = 0;
+  } else if (currentFrameDelay >= FRAME_DELAY) {
+    currentFrame = 1;
+    playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
+    currentFrameDelay = 0;
   }
 }
