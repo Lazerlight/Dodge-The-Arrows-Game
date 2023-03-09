@@ -19,14 +19,12 @@ export function moveSpear(delta) {
     incProperty(e, "--top", SPEED * delta);
     if (getProperty(e, "--top") >= 95 && followingSpear && SPEED <= 0.15) {
       e.style.left = getProperty(playerEl, "--left") + "%";
-      console.log("execute");
       followingSpear = false;
       setProperty(e, "--top", getRandomPositionTop());
       SPEED += SPEED * 0.001;
     } else if (getProperty(e, "--top") >= 95) {
       e.style.left = getRandomPositionLeft() + "%";
       setProperty(e, "--top", getRandomPositionTop());
-      SPEED += SPEED * 0.001;
       followingSpear = true;
     }
   });
@@ -38,6 +36,6 @@ function getRandomPositionLeft() {
 }
 
 function getRandomPositionTop() {
-  // Returning a random number between -20 - -220
-  return Math.floor(Math.random() * -200 - 20);
+  // Returning a random number between -100 - -300
+  return Math.floor(Math.random() * -200 - 100);
 }

@@ -1,6 +1,7 @@
 import { moveBackground, setupBackground } from "./background.js";
 import { movement } from "./player.js";
 import { moveSpear, setupSpear } from "./spear.js";
+import { moveWarp, setupWarp } from "./warp.js";
 
 const playerEl = document.querySelector(".humanoid");
 const spearEl = document.querySelector(".spear");
@@ -8,6 +9,10 @@ const messageEl = document.querySelector(".starting-message");
 
 let lastTime;
 let gameStarted = false;
+
+setupBackground();
+setupSpear();
+setupWarp();
 
 window.addEventListener(
   "keypress",
@@ -32,13 +37,9 @@ function renderGame(time) {
     movement(delta);
     moveBackground(delta);
     moveSpear(delta);
+    moveWarp(delta);
 
     window.requestAnimationFrame(renderGame);
   }
 }
-
-setupBackground();
-setupSpear();
 window.requestAnimationFrame(renderGame);
-
-// TODO - Add a warp portal that sets the speed of ground to 0.3 and increments the score faster then stops after 3 seconds with possibility of spawn every 30 - 90 seconds
