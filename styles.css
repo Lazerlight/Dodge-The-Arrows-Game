@@ -38,6 +38,44 @@ main {
   font-family: "Courier New", Courier, monospace;
   font-size: 1.8vmin;
 }
+.lose-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2.5vmin;
+  width: 90%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.35);
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 25vmin;
+}
+
+button {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3vmin;
+  border-radius: 1vmin;
+  border: none;
+  width: 40%;
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  font-weight: bold;
+  transition: 0.5s;
+}
+button:hover {
+  background-color: transparent;
+  transition: 0.5s;
+  width: 50%;
+  height: 25%;
+  font-size: 4vmin;
+}
 .hidden {
   display: none;
 }
@@ -73,6 +111,7 @@ main {
   top: calc(var(--top) * 1%);
   left: 50%;
   transform: translateX(-50%);
+  animation: animationRotation infinite linear 2s;
 }
 #UFO {
   background-image: url(./Graphics/UFO.png);
@@ -86,4 +125,13 @@ main {
   position: absolute;
   z-index: -1;
   top: calc(var(--top) * 1%);
+}
+
+@keyframes animationRotation {
+  from {
+    transform: rotate(0deg) translateX(-50%);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
