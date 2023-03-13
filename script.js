@@ -1,10 +1,13 @@
+// Export Statements
 export let warpSpeed = false;
 
+// Import Statements
 import { moveBackground, setupBackground, SPEED } from "./background.js";
 import { movement } from "./player.js";
 import { moveSpear, setupSpear } from "./spear.js";
 import { moveWarp, setupWarp } from "./warp.js";
 
+// Constant Variables leading to DOM elements
 const playerEl = document.querySelector(".humanoid");
 const spearEl = document.querySelectorAll(".spear");
 const warpEl = document.querySelector(".warp");
@@ -13,16 +16,19 @@ const loseMessageEl = document.querySelector(".lose-message");
 const buttonEl = document.querySelector("button");
 const scoreEl = document.querySelector(".scoreEl");
 
+// Variables helping with the functionality and checking for events
 let currentScore = 0;
 let lastTime;
 let gameStarted = false;
 let warpSpeedTimeout = 5000;
 
+// Setting up the start main page elements
 scoreEl.textContent = `Score: ${localStorage.getItem("score")}`;
 setupBackground();
 setupSpear();
 setupWarp();
 
+// Event Listeners
 window.addEventListener(
   "keypress",
   function () {
@@ -35,6 +41,8 @@ window.addEventListener(
 buttonEl.addEventListener("click", () => {
   window.location.reload();
 });
+
+// Functions
 function renderGame(time) {
   // The main function that constantly updates the game and renders the elements
   if (gameStarted) {
@@ -97,12 +105,11 @@ function handleWarpSpeed() {
     warpSpeed = false;
   }, warpSpeedTimeout);
 }
+
 function incScore(delta) {
   currentScore += SPEED * 0.5;
-  console.log(currentScore);
   if (currentScore > localStorage.getItem("score")) {
     localStorage.setItem("score", Math.floor(currentScore));
     scoreEl.textContent = `Score: ${localStorage.getItem("score")}`;
   }
 }
-window.requestAnimationFrame(renderGame);

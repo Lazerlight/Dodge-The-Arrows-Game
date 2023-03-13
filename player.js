@@ -34,6 +34,7 @@ export function movement(delta) {
     setProperty(playerEl, "--left", 97);
   }
   currentFrameDelay += 1;
+  // Checking if frame delay is over, if yes => change frame[n]
   if (currentFrame === 1 && currentFrameDelay >= FRAME_DELAY) {
     currentFrame = 2;
     playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
