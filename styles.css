@@ -29,7 +29,10 @@ main {
   overflow: hidden;
   /* background-color: var(--primary-color); */
 }
-
+.score {
+  font-size: 2vmin;
+  color: rgba(255, 255, 255, 0.3);
+}
 .starting-message {
   position: absolute;
   top: 50%;

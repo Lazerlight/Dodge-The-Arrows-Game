@@ -1,6 +1,6 @@
 export let warpSpeed = false;
 
-import { moveBackground, setupBackground } from "./background.js";
+import { moveBackground, setupBackground, SPEED } from "./background.js";
 import { movement } from "./player.js";
 import { moveSpear, setupSpear } from "./spear.js";
 import { moveWarp, setupWarp } from "./warp.js";
@@ -11,11 +11,14 @@ const warpEl = document.querySelector(".warp");
 const messageEl = document.querySelector(".starting-message");
 const loseMessageEl = document.querySelector(".lose-message");
 const buttonEl = document.querySelector("button");
+const scoreEl = document.querySelector(".scoreEl");
 
+let currentScore = 0;
 let lastTime;
 let gameStarted = false;
 let warpSpeedTimeout = 5000;
 
+scoreEl.textContent = `Score: ${localStorage.getItem("score")}`;
 setupBackground();
 setupSpear();
 setupWarp();
@@ -46,6 +49,7 @@ function renderGame(time) {
     moveBackground(delta);
     moveSpear(delta);
     moveWarp(delta);
+    incScore(delta);
     if (hasCollided(playerEl, spearEl)) {
       gameStarted = false;
       loseMessageEl.classList.remove("hidden");
@@ -92,5 +96,13 @@ function handleWarpSpeed() {
   setTimeout(() => {
     warpSpeed = false;
   }, warpSpeedTimeout);
+}
+function incScore(delta) {
+  currentScore += SPEED * 0.5;
+  console.log(currentScore);
+  if (currentScore > localStorage.getItem("score")) {
+    localStorage.setItem("score", Math.floor(currentScore));
+    scoreEl.textContent = `Score: ${localStorage.getItem("score")}`;
+  }
 }
 window.requestAnimationFrame(renderGame);
