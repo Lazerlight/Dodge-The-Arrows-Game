@@ -1,7 +1,7 @@
 import { incProperty, setProperty } from "./CustomFunctions.js";
 import { SPEED } from "./spear.js";
 
-const COOLDOWN = 1 * 60000; // n * 60000 ms = n minutes
+const COOLDOWN = 1 * 30000; // n * 60000 ms = n minutes
 const warpEl = document.querySelector(".warp");
 
 export function setupWarp() {

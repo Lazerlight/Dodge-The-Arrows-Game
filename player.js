@@ -2,6 +2,7 @@ const FRAME_DELAY = 30;
 
 import { getProperty, incProperty, setProperty } from "./CustomFunctions.js";
 import { SPEED } from "./spear.js";
+import { warpSpeed } from "./script.js";
 
 const playerEl = document.querySelector(".humanoid");
 const PLAYER_VELOCITY = {
@@ -35,12 +36,16 @@ export function movement(delta) {
   }
   currentFrameDelay += 1;
   // Checking if frame delay is over, if yes => change frame[n]
-  if (currentFrame === 1 && currentFrameDelay >= FRAME_DELAY) {
+  if (currentFrame === 1 && currentFrameDelay >= FRAME_DELAY && !warpSpeed) {
     currentFrame = 2;
     playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
     currentFrameDelay = 0;
-  } else if (currentFrameDelay >= FRAME_DELAY) {
+  } else if (currentFrameDelay >= FRAME_DELAY && !warpSpeed) {
     currentFrame = 1;
+    playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
+    currentFrameDelay = 0;
+  } else if (warpSpeed) {
+    currentFrame = 3;
     playerEl.style.backgroundImage = `url(./Graphics/SpaceShip${currentFrame}.png)`;
     currentFrameDelay = 0;
   }
