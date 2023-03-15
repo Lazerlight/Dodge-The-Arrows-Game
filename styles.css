@@ -56,7 +56,7 @@ main {
   padding: 25vmin;
 }
 
-button {
+main button {
   position: absolute;
   top: 80%;
   left: 50%;
@@ -72,12 +72,25 @@ button {
   font-weight: bold;
   transition: 0.5s;
 }
-button:hover {
+main button:hover {
   background-color: transparent;
   transition: 0.5s;
   width: 50%;
   height: 25%;
   font-size: 4vmin;
+}
+.mobile-buttons {
+  margin-top: 5vmin;
+  display: flex;
+  gap: 10vmin;
+}
+.right-button,
+.left-button {
+  width: 30vmin;
+  height: 10vmin;
+  border: none;
+  border-radius: 1vmin;
+  background: #141c24;
 }
 .hidden {
   display: none;

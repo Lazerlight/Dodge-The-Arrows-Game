@@ -5,6 +5,8 @@ import { SPEED } from "./spear.js";
 import { warpSpeed } from "./script.js";
 
 const playerEl = document.querySelector(".humanoid");
+const rightButton = document.querySelector(".right-button");
+const leftButton = document.querySelector(".left-button");
 const PLAYER_VELOCITY = {
   x: 0,
 };
@@ -20,6 +22,20 @@ window.addEventListener("keydown", (e) => {
 
 window.addEventListener("keyup", function () {
   // Checking if the key is no longer held down and stops the direction of movement
+  PLAYER_VELOCITY.x = 0;
+});
+
+// Event listeners for mobile button controls
+rightButton.addEventListener("touchstart", () => {
+  PLAYER_VELOCITY.x = -1;
+});
+rightButton.addEventListener("touchend", () => {
+  PLAYER_VELOCITY.x = 0;
+});
+leftButton.addEventListener("touchstart", () => {
+  PLAYER_VELOCITY.x = 1;
+});
+leftButton.addEventListener("touchend", () => {
   PLAYER_VELOCITY.x = 0;
 });
 

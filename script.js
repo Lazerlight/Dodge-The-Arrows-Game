@@ -32,9 +32,22 @@ setupWarp();
 window.addEventListener(
   "keypress",
   function () {
-    gameStarted = true;
-    messageEl.classList.add("hidden");
-    renderGame();
+    if (!gameStarted) {
+      gameStarted = true;
+      messageEl.classList.add("hidden");
+      renderGame();
+    }
+  },
+  { once: true }
+);
+window.addEventListener(
+  "click",
+  () => {
+    if (!gameStarted) {
+      gameStarted = true;
+      messageEl.classList.add("hidden");
+      renderGame();
+    }
   },
   { once: true }
 );
