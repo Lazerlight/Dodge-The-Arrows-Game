@@ -20,8 +20,12 @@ const scoreEl = document.querySelector(".scoreEl");
 let currentScore = 0;
 let lastTime;
 let gameStarted = false;
-let warpSpeedTimeout = 5000;
+let warpSpeedTimeout = 4000;
 
+// Audio Files
+let warpAudio = new Audio("./Audio/Time_Warp_Sound_Effect.mp3");
+let ambientAudio = new Audio("./Audio/deep-space-ambiance.mp3");
+let beepAudio = new Audio("./Audio/beepSound.mp3");
 // Setting up the start main page elements
 scoreEl.textContent = `Score: ${localStorage.getItem("score")}`;
 setupBackground();
@@ -34,6 +38,7 @@ window.addEventListener(
   function () {
     if (!gameStarted) {
       gameStarted = true;
+      ambientAudio.play();
       messageEl.classList.add("hidden");
       renderGame();
     }
@@ -45,6 +50,7 @@ window.addEventListener(
   () => {
     if (!gameStarted) {
       gameStarted = true;
+      ambientAudio.play();
       messageEl.classList.add("hidden");
       renderGame();
     }
@@ -73,9 +79,12 @@ function renderGame(time) {
     incScore(delta);
     if (hasCollided(playerEl, spearEl)) {
       gameStarted = false;
+      beepAudio.play();
+      ambientAudio.pause();
       loseMessageEl.classList.remove("hidden");
     }
     if (hasCollided(playerEl, warpEl)) {
+      warpAudio.play();
       handleWarpSpeed();
     }
     window.requestAnimationFrame(renderGame);

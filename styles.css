@@ -151,3 +151,9 @@ main button:hover {
     transform: rotate(360deg);
   }
 }
+
+@media screen and (min-width: 770px) {
+  .mobile-buttons {
+    display: none;
+  }
+}
